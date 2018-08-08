@@ -30,7 +30,7 @@ text='''近期，作为北约盟友的美国和土耳其相互制裁，近乎撕
 
 tt = TextTeaser()
 
-sentences = tt.summarize(title, text)
+sentences_score_list = tt.summarize(title, text)
 
-for sentence in sentences:
-    print(sentence)
+for sentence, score in sentences_score_list:
+    print(sentence + str(score))
