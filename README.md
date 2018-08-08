@@ -12,6 +12,8 @@ Instructions are consistent but text need to be in chinese.
 
 Using jieba as tokenizer.
 
+Python3 needed.
+
 
 TextTeaser
 =============

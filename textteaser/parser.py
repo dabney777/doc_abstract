@@ -61,10 +61,11 @@ class Parser:
         start = 0
         i = 0  # 记录每个字符的位置
         sents = []
-        punt_list = '.!?:;~。！？～'
+        # '\u3000' is Chinese char space
+        punt_list = '\n.!?:;~。！？～'+'\u3000'
         for word in text:
             if word in punt_list:
-                sents.append((text[start:i + 1]).strip(' '))
+                sents.append((text[start:i + 1]).strip('\u3000\n '))
                 start = i + 1
                 i += 1
             else:
