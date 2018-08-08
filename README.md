@@ -1,9 +1,17 @@
 
-TextTeaser -中文版
+TextTeaser - 中文版
 =============
 用法依旧。
 
 兼容中文。
+
+
+TextTeaser - for Chinese
+=============
+Instructions are consistent but text need to be in chinese.
+
+Using jieba as tokenizer.
+
 
 TextTeaser
 =============

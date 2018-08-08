@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from parser import Parser
+from .parser import Parser
 
 
 class Summarizer:
@@ -9,7 +9,6 @@ class Summarizer:
 
     def summarize(self, text, title, source, category):
         sentences = self.parser.splitSentences(text)
-        titleWords = self.parser.removePunctations(title)
         titleWords = self.parser.splitWords(title)
         (keywords, wordCount) = self.parser.getKeywords(text)
 
@@ -74,11 +73,11 @@ class Summarizer:
             word = word.lower()
             index = -1
 
-        if word in keywordList:
-            index = keywordList.index(word)
+            if word in keywordList:
+                index = keywordList.index(word)
 
-        if index > -1:
-            score += topKeywords[index]['totalScore']
+            if index > -1:
+                score += topKeywords[index]['totalScore']
 
         return 1.0 / abs(len(words)) * score
 

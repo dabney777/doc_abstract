@@ -1,7 +1,7 @@
-# !/usr/bin/python
+# !/usr/bin/env python
 # -*- coding: utf-8 -*-
-import nltk.data
 import os
+import jieba
 
 
 class Parser:
@@ -58,21 +58,34 @@ class Parser:
         return len(matchedWords) / (len(title) * 1.0)
 
     def splitSentences(self, text):
-        tokenizer = nltk.data.load('file:' + os.path.dirname(os.path.abspath(__file__)).decode('utf-8') + '/trainer/english.pickle')
+        start = 0
+        i = 0  # 记录每个字符的位置
+        sents = []
+        punt_list = '.!?:;~。！？～'
+        for word in text:
+            if word in punt_list:
+                sents.append((text[start:i + 1]).strip(' '))
+                start = i + 1
+                i += 1
+            else:
+                i += 1
+        if start < len(text):
+            print((text[start:]).strip(' '))
+            sents.append((text[start:]).strip(' '))  # 这是为了处理文本末尾没有标点符号的情况
+        return sents
 
-        return tokenizer.tokenize(text)
 
     def splitWords(self, sentence):
-        return sentence.lower().split()
-
-    def removePunctations(self, text):
-        return ''.join(t for t in text if t.isalnum() or t == ' ')
+        return jieba.lcut(sentence)
 
     def removeStopWords(self, words):
         return [word for word in words if word not in self.stopWords]
 
+    def removePunctations(self, text):
+        return text.translate(str.maketrans('', '', '\'。，、＇：∶；?‘’“”〝〞ˆˇ﹕:︰﹔﹖﹑·¨…,.;！´？！～—ˉ｜‖＂〃｀@﹫¡¿﹏﹋﹌︴々﹟#﹩$﹠&﹪%*﹡﹢﹦﹤‐￣¯―﹨ˆ˜﹍﹎+=<­­＿_-\ˇ~﹉﹊（）〈〉‹›﹛﹜『』〖〗［］《》〔〕{}「」【】'))
+
     def getStopWords(self):
-        with open(os.path.dirname(os.path.abspath(__file__)) + '/trainer/stopWords.txt') as file:
+        with open(os.path.dirname(os.path.abspath(__file__)) + '/trainer/stopWords.txt', mode='r', encoding='utf-8') as file:
             words = file.readlines()
 
         return [word.replace('\n', '') for word in words]
