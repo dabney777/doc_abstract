@@ -13,7 +13,7 @@ TextTeaser - 中文版
 Title 
 新闻分析：土美关系急转直下能否峰回路转
 Document: 
-近期，作为北约盟友的美国和土耳其相互制裁，近乎撕破脸的架势。有报道称，土耳其将派出代表团赴华盛顿就双边关系紧张局势进行沟通。
+    近期，作为北约盟友的美国和土耳其相互制裁，近乎撕破脸的架势。有报道称，土耳其将派出代表团赴华盛顿就双边关系紧张局势进行沟通。
 　　分析人士指出，土美关系不断恶化的现实，暴露了两个重要的北约盟友在一系列国际和地区事务上的深刻分歧，双方持续对抗将加剧北约内部分化，让业已混乱的中东局势更加复杂。
 　　1.争议焦点
 　　７月举行北约峰会上，土耳其总统埃尔多安和美国总统特朗普实现会面，此后双边关系有所回暖。美土关系再度急转直下的一个争议焦点，是美籍牧师布伦森案。
@@ -67,4 +67,4 @@ The original Scala TextTeaser can still be accessed [here](https://github.com/Mo
     >>> tt = TextTeaser()
     >>> tt.summarize(title, text)
 
-You can also test TextTeaser by running `python test.py`.
+
